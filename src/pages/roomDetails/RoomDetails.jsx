@@ -342,7 +342,7 @@ const RoomDetails = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentImageIndex(prevIndex => (prevIndex + 1) % singleRoom.images.length);
-        }, 6000); // Change image every 6 seconds
+        }, 4000); // Change image every 6 seconds
 
         return () => clearInterval(interval); // Cleanup interval on component unmount
     }, [singleRoom.images]);
