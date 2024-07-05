@@ -145,7 +145,10 @@
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
     border-radius: 5px;
+    width: 100%;
 }
+
+
 
 .right_listing h3 {
     margin-top: 0;
@@ -307,6 +310,13 @@
 .dot.active {
     background-color: #7572f9;
 }
+
+/* .thumbnail_image.active {
+    border: 2px solid #7571f9; 
+} */
+
+
+
 
 .slide_controls {
     position: absolute;

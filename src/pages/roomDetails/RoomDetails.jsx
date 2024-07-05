@@ -295,14 +295,12 @@
 // export default RoomDetails;
 
 
-
-
 import React, { useEffect, useState } from 'react';
 import '../roomDetails/roomDetails.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp, FaHome, FaSearchLocation } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaWhatsapp, FaHome, FaSearchLocation } from "react-icons/fa";
 import Loading from '../../components/auth/signup/Loading';
 import Features from './Features'; 
 import Location from './Location';
@@ -343,12 +341,8 @@ const RoomDetails = () => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentImageIndex(prevIndex => {
-                const newIndex = (prevIndex + 1) % singleRoom.images.length;
-                setMainImage(singleRoom.images[newIndex]);
-                return newIndex;
-            });
-        }, 6000); // Change image every 3 seconds
+            setCurrentImageIndex(prevIndex => (prevIndex + 1) % singleRoom.images.length);
+        }, 6000); // Change image every 6 seconds
 
         return () => clearInterval(interval); // Cleanup interval on component unmount
     }, [singleRoom.images]);
@@ -411,7 +405,7 @@ const RoomDetails = () => {
         return <Loading />;
     }
 
-    if (!singleRoom || !singleRoom.images) {
+    if (!singleRoom || !singleRoom.images || singleRoom.images.length === 0) {
         return <div>No room found.</div>;
     }
 
@@ -454,7 +448,7 @@ const RoomDetails = () => {
                         <h3><FaHome /> Room Details</h3>
                     </div>
                     <div className='property_details'>
-                        <Features singleRoom={singleRoom} /> {/* Include Features component */}
+                        <Features singleRoom={singleRoom} /> 
                     </div>                   
                 </div>
             </div>
@@ -473,3 +467,4 @@ const RoomDetails = () => {
 };
 
 export default RoomDetails;
+
